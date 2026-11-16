@@ -86,13 +86,13 @@ GameVerse/
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Kruze01/GameVerse.git
    ```
 
 2. Navigate to the repository directory:
 
    ```bash
-   cd <repository-name>
+   cd GameVerse-main
    ```
 
 3. Ensure PHP and the SimpleXML extension are installed and enabled.
