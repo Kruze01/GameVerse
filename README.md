@@ -1,40 +1,38 @@
 
 # GameVerse 🎮
 
-**GameVerse** is a gaming catalog website that showcases video games across different genres. It allows visitors to explore featured games, browse genre-specific collections, view game information, and contribute new game entries through a submission form.
+GameVerse is a gaming catalog website built with PHP, HTML, CSS, and JavaScript. It allows users to explore video games by genre, view game information, discover featured titles, and submit new games to the catalog.
 
 ## ✨ Features
 
-- **Game Catalog** – Browse a collection of video games with images, descriptions, prices, platforms, and reviews.
-- **Featured Games** – Discover selected games directly from the homepage.
-- **Genre Browsing** – Explore games by genre, including:
-  - First-Person Shooters (FPS)
-  - Role-Playing Games (RPG)
+- **Game Catalog** – Browse video games with images, descriptions, prices, platforms, and reviews.
+- **Featured Games** – Discover selected games on the homepage.
+- **Genre Browsing** – Explore games by genre, including First-Person Shooters (FPS) and Role-Playing Games (RPG).
 - **Dynamic Content Rendering** – Generate genre pages dynamically using PHP and XML data.
-- **Game Submission** – Submit new game entries through an interactive form.
-- **Input Validation** – Validate game information, URLs, prices, platforms, and reviews before submission.
-- **Search Tags** – Add multiple searchable tags to game entries.
-- **External Game Links** – Navigate to external game pages for additional information.
-- **Recently Visited Genre** – Remember the last visited genre page using browser cookies.
-- **Responsive Styling** – Apply different layouts and font sizes for desktop and mobile screen widths.
-- **Information Pages** – Include About Us and Contact pages.
+- **Game Submission** – Add new games through an interactive submission form.
+- **Input Validation** – Validate game information, URLs, prices, platforms, and reviews.
+- **Search Tags** – Associate multiple searchable tags with game entries.
+- **External Game Links** – Access additional game information through external links.
+- **Recently Visited Genre** – Remember the last visited genre using browser cookies.
+- **Responsive Styling** – Adapt the website layout for different screen sizes.
+- **Information Pages** – Include About and Contact pages.
 
 ## 🛠️ Technology Stack
 
 | Technology | Purpose |
 |---|---|
-| HTML5 | Website structure and content |
+| HTML5 | Website structure |
 | CSS3 | Styling and responsive layouts |
-| JavaScript | Client-side interactions and form validation |
-| PHP | Server-side processing and dynamic page generation |
+| JavaScript | Client-side interactions and validation |
+| PHP | Server-side processing and dynamic content |
 | XML | Game catalog data storage |
 | SimpleXML | Reading and updating XML data |
-| Cookies | Remembering recently visited genre pages |
+| Cookies | Remembering recently visited genres |
 
 ## 📂 Project Structure
 
 ```text
-MyStore/
+GameVerse/
 │
 ├── index.html
 ├── index.php
@@ -68,12 +66,10 @@ MyStore/
 │       ├── rpg.xml
 │       └── xmltemplate.xml
 │
-├── theme/
-│   ├── style.css
-│   ├── template.php
-│   └── xmltemplate.php
-│
-└── README.txt
+└── theme/
+    ├── style.css
+    ├── template.php
+    └── xmltemplate.php
 ```
 
 ## ⚙️ Getting Started
@@ -82,8 +78,8 @@ MyStore/
 
 - PHP 8.0 or later
 - PHP SimpleXML extension
-- A web browser
-- A local PHP development environment (such as XAMPP, WAMP, or PHP's built-in development server)
+- A modern web browser
+- A local PHP development environment (XAMPP, WAMP, or PHP built-in development server)
 
 ### Installation
 
@@ -93,31 +89,31 @@ MyStore/
    git clone <repository-url>
    ```
 
-2. Navigate to the project directory:
+2. Navigate to the repository directory:
 
    ```bash
-   cd MyStore
+   cd <repository-name>
    ```
 
 3. Ensure PHP and the SimpleXML extension are installed and enabled.
 
 ### Running the Application
 
-You can use PHP's built-in development server.
-
-From inside the `MyStore` directory, execute:
+Start the PHP development server from the repository root:
 
 ```bash
 php -S localhost:8000
 ```
 
-4. Open your browser and visit:
+Open the following address in your browser:
 
-   ```text
-   http://localhost:8000
-   ```
+```text
+http://localhost:8000
+```
 
-The homepage will be displayed.
+The application homepage will be displayed.
+
+**Note:** Use the PHP pages (`.php`) when running the application through a PHP server. Static HTML pages may not support all dynamic functionality.
 
 ## 📖 Application Pages
 
@@ -125,20 +121,22 @@ The homepage will be displayed.
 |---|---|
 | `index.php` | Homepage featuring selected games and recently visited genre information. |
 | `about.php` | Displays website information, privacy policy, and terms and conditions. |
-| `contact.php` | Provides a contact form for submitting questions and feedback. |
+| `contact.php` | Provides a contact form for questions and feedback. |
 | `genre.php` | Dynamically displays games based on the selected genre. |
 | `collection.php` | Provides a form for submitting new game entries. |
 | `submit.php` | Processes submitted game information and updates the corresponding XML file. |
 
 ## 🗂️ Game Data Management
 
-Game information is stored in XML files under `data/xml/`.
+Game information is stored in XML files inside `data/xml/`.
 
-- `fps.xml` – Stores First-Person Shooter game information.
-- `rpg.xml` – Stores Role-Playing Game information.
-- `xmltemplate.xml` – Provides an XML data template.
+| File | Description |
+|---|---|
+| `fps.xml` | Stores First-Person Shooter game information. |
+| `rpg.xml` | Stores Role-Playing Game information. |
+| `xmltemplate.xml` | Provides the XML data template. |
 
-Each game entry contains information such as:
+Each game entry contains:
 
 | Field | Description |
 |---|---|
@@ -151,47 +149,44 @@ Each game entry contains information such as:
 | Filename | Game image path |
 | URL | External game information link |
 
-The PHP application uses SimpleXML to retrieve game information and dynamically generate genre pages.
+PHP and SimpleXML are used to retrieve game information and dynamically generate genre pages.
 
 ## ➕ Adding a New Game
 
 1. Navigate to the **Collection** page.
-2. Complete the required information.
+2. Enter the game name and description.
 3. Select the appropriate genre (FPS or RPG).
-4. Add search tags if applicable.
-5. Enter the game price and select supported platforms.
-6. Provide an image source and external game URL.
-7. Enter a game description and optional review.
+4. Add search tags.
+5. Enter the game price and supported platforms.
+6. Provide the game image path and external URL.
+7. Enter a review if applicable.
 8. Accept the terms and conditions.
 9. Submit the form.
 
-The application validates the submitted information and stores the new game entry in the corresponding XML file.
+The application processes the submitted information and adds the new game entry to the corresponding XML file.
 
-**Note:** The PHP process requires write permission for the relevant XML file and its directory for game submissions to work.
+**Note:** The PHP process requires write permission for the relevant XML file and its directory.
 
-## 🎨 Interface
+## 🎨 Styling and Templates
 
-GameVerse uses a dark-themed interface with contrasting text, colorful navigation elements, and game thumbnails to create a gaming-oriented browsing experience.
+The website uses a shared stylesheet and PHP templates to maintain consistent layouts.
 
-The shared styling is maintained in:
-
-```text
-theme/style.css
-```
-
-Common page layouts are managed through:
-
-- `theme/template.php` – Shared PHP page template.
+- `theme/style.css` – Website styling and responsive layouts.
+- `theme/template.php` – Shared page template.
 - `theme/xmltemplate.php` – Dynamic template for displaying XML-based game information.
 
-## 📂 Data and Storage
+## 💾 Storage
 
-- Game catalog information is stored in local XML files.
-- Game images are stored in the `data/images/` directory.
-- Recently visited genre information is stored using browser cookies.
-- New game submissions update the corresponding XML file through PHP.
+- **Game data:** Stored in local XML files.
+- **Game images:** Stored in `data/images/`.
+- **Recently visited genre:** Stored using browser cookies.
+- **New game submissions:** Written to the corresponding XML file through PHP.
 
-The application does not use a relational database or a user account system.
+The application does not currently use a relational database or cloud-based storage.
+
+## 📄 License
+
+No license has currently been specified for this project.
 
 ---
 
