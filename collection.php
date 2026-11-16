@@ -1,0 +1,379 @@
+<?php
+/**
+ * @filename        collection.php
+ * @author          Kruze
+ * @creationDate    November 24, 2025
+ */
+    $title = "Collection";
+    $cssDirectory = "theme/style.css";
+    $embeddedCSS = '
+        form,h1 {
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        form h3 {
+            text-decoration: underline;
+        }
+        span {
+            color: red;
+        }
+        #tags{
+            color:#fbda1eff;
+        }
+        #deleteBtn{
+            margin-left: 10px;
+            display: none;
+        }
+        #tagsContext{display:none;}
+        #priceContext{display:none;}
+        #platformContext{display:none;}
+        .linkBox{
+            margin-left:60px; 
+            width:330px;
+        }
+        .textBox {
+            width: 520px;
+            height: 100px;
+        }
+        #upload, #clear {
+            width: 75px;
+            height: 30px;
+        }
+    ';
+    $embeddedJs = '
+        function displayGenre(){
+            document.querySelectorAll(".genreBtn").forEach(element => {
+                let genreBox = element;
+                if (genreBox.style.display == "none")
+                    genreBox.style.display = "block";
+                else
+                    genreBox.style.display = "none";
+            });
+        }
+
+        function addTag(){
+            let inputs = document.getElementById("tags-box").value.trim();            
+            let showTag = document.getElementById("tags");
+            if (inputs.length===0) {
+                alert("Please do not add an empty search tag.");
+            }
+            else if (inputs.includes(",")){
+                alert("Please do not include any comma in search tag.");
+            }
+            else {
+                if (showTag.innerText.length===0) {showTag.innerText += inputs;}
+                else {showTag.innerText += (", "+ inputs);}
+
+                document.getElementById("tags-box").value="";
+                document.getElementById("deleteBtn").style.display = "inline";
+                document.getElementById("tagsContext").value = showTag.innerText;
+            }            
+        }
+
+        function deleteTag(){
+            let showTag = document.getElementById("tags");
+            let allTags = showTag.innerText.split(",");
+            allTags.pop();
+            showTag.innerText="";
+
+            allTags.forEach(tag => {
+                if (showTag.innerText.length===0) {showTag.innerText += tag;}
+                else {showTag.innerText += (", "+ tag);}
+            });
+
+            if (showTag.innerText.length===0) 
+                document.getElementById("deleteBtn").style.display = "none";
+
+            document.getElementById("tagsContext").value = showTag.innerText;
+        }
+
+        function checkGeneralValue(elementId){
+            let element = document.getElementById(elementId);
+            let data = element.value.trim();
+            if (data.length > 0) 
+                return true;
+            else 
+                return false;
+        }
+
+        function checkEmail(elementId) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let email = document.getElementById(elementId).value.trim();
+            if (emailRegex.test(email)) 
+                return true;
+            else 
+                return false;
+        }
+
+        function checkGenre(elementId) {
+            let data = document.getElementById(elementId).value;
+            if (data==="")
+                return false;
+            else
+                return true;
+        }
+
+        function checkPrice(currencyId, amountId, actualPriceId) {
+            let currency = document.getElementById(currencyId).value;
+            let amount = document.getElementById(amountId).value.trim();
+            let price = document.getElementById(actualPriceId);
+            if (amount.length===0 || amount==0 || amount==0.0 || amount==0.00) {
+                price.value = "Free";
+                return true;
+            }
+            else {
+                const numberRegex = /^\d+(\.\d{1,2})?$/;
+                if (numberRegex.test(amount)) {
+                    price.value = (currency + " " + amount);
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
+
+        function checkPlatform(linuxId,windowsId,macOSid,androidId,actualPlatformsId) {
+            let status = false;
+            let actualPlatforms = document.getElementById(actualPlatformsId);
+            actualPlatforms.value = "";
+            let linux = document.getElementById(linuxId);
+            let windows = document.getElementById(windowsId);
+            let macOS = document.getElementById(macOSid);
+            let android = document.getElementById(androidId);
+            const platforms = [linux,windows,macOS,android];
+            
+            platforms.forEach(element => {
+                if (element.checked){
+                    status = true;
+                    if (actualPlatforms.value.length > 0) {
+                        actualPlatforms.value += (", &"+element.value+";");}
+                    else {
+                        actualPlatforms.value += ("&"+element.value+";");}
+                }
+            });
+
+            return status;
+        }
+
+        function checkUrl(elementId){
+            const urlRegex = /^https?:\/\/[^\s$.?#].[^\s]*$/i;
+            let url = document.getElementById(elementId).value.trim();
+            if (urlRegex.test(url)) 
+                return true;
+            else 
+                return false;
+        }
+
+        function checkReview(elementId) {
+            let review = document.getElementById(elementId).value.trim();
+            <!-- Criteria: Exception when there are no reviews, i.e., can submit. -->
+            if (review==="") {
+                return true;
+            }
+            else {
+                const reviewRegex = /\b(5(\.0)?|[0-4](\.\d)?)\s+out of 5 stars\b/g; <!-- Criteria : Check for phrase "x out of 5 stars" AND x can be of single decimal place. -->
+                if (reviewRegex.test(review)) 
+                    return true;
+                else 
+                    return false;   <!-- Criteria : Form not submitting if phrase missing or other error (Explanation: this needs to return true in order to submit the form) -->
+            }
+
+        }
+
+        function checkTandC(elementId) {
+            let confirm = document.getElementById(elementId);
+            if (confirm.checked)
+                return true;
+            else 
+                return false;
+        }
+
+        function checkForm(){
+            let first = checkGeneralValue("firstname");
+            let last = checkGeneralValue("lastname");
+            let email = checkEmail("email");
+            let title = checkGeneralValue("title");
+            let genre = checkGenre("genre");
+            let price = checkPrice("currency","amount","priceContext");
+            let platform = checkPlatform("lnx","win","mac","adr","platformContext");
+            let image = checkGeneralValue("image");
+            let url = checkUrl("link");
+            let desc = checkGeneralValue("desc");
+            let review = checkReview("review");
+            let readTandC = checkTandC("yesTC");
+
+            if (first && last && email && title && genre && price && platform && image && url && desc && review && readTandC)
+                return true;
+            else {
+                let errorMessage = "";
+                if (!first) errorMessage += "Error: Please enter your firstname.\n";
+                if (!last) errorMessage += "Error: Please enter your lastname.\n";
+                if (!email) errorMessage += "Error: Please enter a valid email.\n";
+                if (!title) errorMessage += "Error: Please enter your game title.\n";
+                if (!genre) errorMessage += "Error: Please choose a game genre.\n";
+                if (!price) errorMessage += "Error: Please enter a valid price amount up to two decimal places.\n(Leave it blank if it is free.)\n";
+                if (!platform) errorMessage += "Error: Please choose at least one platform.\n";
+                if (!image) errorMessage += "Error: Please fill an image source.\n";
+                if (!url) errorMessage += "Error: Please fill a valid external URL related to your game.\n";
+                if (!desc) errorMessage += "Error: Please enter a brief game description.\n";
+                if (!review) errorMessage += "Error: Please enter your review in a valid format or leave this blank.\n" ;   <!-- Criteria : Error message if phrase missing, non-numeric or empty.-->
+                if (!readTandC) errorMessage += "Error: Please confirm that you have read the terms and conditions.\n";
+                alert(errorMessage);
+                return false;
+            }
+        }
+
+        function formSubmit() {
+            if (checkForm()) {
+                const inputForm = document.getElementById("inputForm");
+                alert("Your form has been uploaded successfully!");
+                inputForm.submit();
+            }         
+        }
+    ';
+    $content = '
+        <header>
+            <table>
+                <tr>
+                    <td><img src="data/images/website/logo.png" width="200" height="200" alt="GameVerse Logo"></td>
+                    <td style="font-size: 100px; font-weight: 1000">Games</td>
+                </tr>
+            </table>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.php" style="border: 2px outset #6be2fcff">Home</a></li>
+                <li><a href="about.php" style="border: 2px outset #00ffddff">About Us</a></li>   
+                <li><a href="contact.php" style="border: 2px outset #52ff89ff">Contact</a></li>
+                <li>
+                    <a style="border: 2px outset #e1fb1eff" onclick="displayGenre()">Genre</a>
+                    <div id="genreBtn-container">
+                    <form id="btn-form" action="genre.php" method="get">
+                        <button type="submit" class="genreBtn" style="display:none;" value="fps" name="genre">FPS</button>
+                        <button type="submit" class="genreBtn" style="display:none;" value="rpg" name="genre">RPG</button>
+                    </form>
+                    </div>
+                </li>
+                <li><a href="collection.php" style="border: 2px outset #fbeb59ff">Collection</a></li>
+            </ul>
+        </nav>
+
+        <!-- Criteria : level 1 heading for Collection page -->
+        <h1>Please fill out the following form to upload a new game.</h1>
+        <form id="inputForm" method="post" action="submit.php">
+
+            <!-- Criteria : User Information-->
+            <h3>User Information</h3><br>
+
+            <label>First Name <span>*</span></label>
+            <input type="text" id="firstname" name="firstname" style="margin-left: 80px;">
+            <br><br><br>
+
+            <label>Last Name <span>*</span></label>
+            <input type="text" id="lastname" name="lastname" style="margin-left: 80px;">
+            <br><br><br>
+
+            <label>Email Address <span>*</span></label>
+            <input type="email" id="email" name="email" style="margin-left: 50px;">
+            <br><br><br>
+
+            <label>Have you submitted any game before?</label><br>
+            <label style="margin-left: 50px;">Yes</label>
+            <input type="radio" name="experience" value="yes">
+            <label style="margin-left: 30px;">No</label>
+            <input type="radio" name="experience" value="no" checked>
+
+            <br><br>
+
+            <h3>Game Information</h3><br>
+
+            <!-- Criteria : Product name-->
+            <label>Game Title <span>*</span></label>    <!-- Criteria : Asterisk on required tags and attributes.-->
+            <input type="text" id="title" name="game-name" style="margin-left:80px">
+            <br><br><br>
+
+            <!-- Criteria : Dropdown box for genre selection. -->
+            <label>Genre <span>*</span></label>
+            <select id="genre" style="margin-left:120px" name="game-genre">
+                <option value="">Not Selected</option>
+                <option value="FPS">FPS</option>
+                <option value="RPG">RPG</option>
+            </select><br><br><br>
+
+            <!-- Criteria : Product search tags (sTags)-->
+            <label style="margin-right:10px">Search Tags:</label>
+            <input id="tagsContext" name="game-sTags"><span id="tags"></span>   <!-- actual game search tags here -->
+            <input type="button" id="deleteBtn" value="Delete" onclick="deleteTag()">   <!-- button to delete search tags -->
+            <br>
+            <input type="text" id="tags-box" placeholder="Enter applicable search tags one after another. Avoid using a comma." style="width:520px">
+            <input type="button" value="Add" onclick="addTag()">    <!-- button to add search tags -->
+            <br><br><br>
+
+            <!-- Criteria : Product pricing-->
+            <label>Game Price <span>*</span></label>
+            <select style="margin-left:25px" id="currency">
+                <option value="SGD">SGD</option>
+                <option value="MMK">MMK</option>
+                <option value="AUD">AUD</option>
+                <option value="USD">USD</option>
+            </select>
+            <input type="text" id="amount" placeholder="Leave this blank if it is free.">
+            <input id="priceContext" name="game-price">     <!-- actual game price here -->
+            <br><br><br>
+
+            <label>Available Platforms <span>* </span>:</label>
+            <label style="margin-left:10px">Linux</label>
+            <input type="checkbox" id="lnx" value="lnx">
+            <label style="margin-left:30px">Windows</label>
+            <input type="checkbox" id="win" value="win">
+            <label style="margin-left:30px">MacOS</label>
+            <input type="checkbox" id="mac" value="mac">
+            <label style="margin-left:30px">Android</label>
+            <input type="checkbox" id="adr" value="adr">
+            <input id="platformContext" name="game-platform">   <!-- actual game platforms here -->
+            <br><br><br>
+
+            <!-- Criteria : Product picture -->
+            <label>Game Image <span>*</span></label>
+            <input type="text" id="image" class="linkBox" name="game-filename" placeholder="Enter image source link for game thumbnail.">
+            <br><br><br>
+
+            <!-- Criteria : Product URL-->
+            <label>External Link <span>*</span></label>
+            <input type="text" id="link" class="linkBox" name="game-url" placeholder=\'Enter external link related to the game. Eg."https://..."\'>
+            <br><br><br>
+
+            <!-- Criteria : Product Description-->
+            <label>Game Description <span>*</span></label><br>
+            <textarea class="textBox" id="desc" name="game-description" placeholder="Enter a brief description about the game."></textarea>
+            <br><br><br>
+
+            <!-- Criteria : Product reviews-->
+            <label>Game review</label><br>
+            <textarea class="textBox" id="review" name="game-review" placeholder=\'Please include the phrase, "x out of 5 stars" where x is your rating. (x must be a number or a decimal up to 1 decimal place)\'></textarea>
+            <br><br><br>
+
+            <!-- Criteria : T&C checkbox -->
+            <label style="margin-left: 20px;"><strong>I have read and accept the terms and conditions</strong> <span>*</span> </label>
+            <input type="checkbox" id="yesTC" name="acceptTandC" value="yes">
+            <br><br><br>
+        
+            <!-- Criteria: Submit and clear button -->
+            <button type="button" id="upload" onclick="formSubmit()">Upload</button>
+            <button type="reset" id="clear" style="margin-left:370px">Clear</button>
+        </form>
+
+        <hr>
+
+        <footer>
+            <p>&copy; All Copyrights Reserved.</p>
+            <address>
+                Kruze | GameVerse
+            </address>
+            
+        </footer>
+    ';
+?>
+
+<?php include("theme/template.php"); ?>

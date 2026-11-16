@@ -1,0 +1,99 @@
+<?php
+/**
+ * @filename        aboout.php
+ * @author          Kruze
+ * @creationDate    November 17, 2025
+ */
+    $title = "About Us";
+    $cssDirectory = "theme/style.css";
+    $embeddedCSS = "
+        main h1 {
+            background-image: linear-gradient(to right, #00BFFF, #7FFC80, #FFD700);
+            background-clip: text;
+            color: transparent;
+        }
+
+        header {
+            margin-top: 20px;
+            margin-bottom: 45px;
+        }
+
+        main {margin: 30px;}";
+        
+    $embeddedJs = '
+        function displayGenre(){
+            document.querySelectorAll(".genreBtn").forEach(element => {
+                let genreBox = element;
+                if (genreBox.style.display == "none")
+                    genreBox.style.display = "block";
+                else
+                    genreBox.style.display = "none";
+            });
+        }';
+
+    $content = '
+        <header>
+            <table>
+                <tr>
+                    <td><img src="data/images/website/logo.png" width="200" height="200" alt="GameVerse Logo"></td>
+                    <td style="font-size: 100px; font-weight: 1000">About Us</td>
+                </tr>
+            </table>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.php" style="border: 2px outset #6be2fcff">Home</a></li>
+                <li><a href="about.php" style="border: 2px outset #00ffddff">About Us</a></li>   
+                <li><a href="contact.php" style="border: 2px outset #52ff89ff">Contact</a></li>
+                <li>
+                    <a style="border: 2px outset #e1fb1eff" onclick="displayGenre()">Genre</a>
+                    <div id="genreBtn-container">
+                    <form id="btn-form" action="genre.php" method="get">
+                        <button type="submit" class="genreBtn" style="display:none;" value="fps" name="genre">FPS</button>
+                        <button type="submit" class="genreBtn" style="display:none;" value="rpg" name="genre">RPG</button>
+                    </form>
+                    </div>
+                </li>
+                <li><a href="collection.php" style="border: 2px outset #fbeb59ff">Collection</a></li>
+            </ul>
+        </nav>
+
+        <main>
+
+            <article>
+                <h1>Our Legacy: Five Decades of Service</h1>
+                <p><span style="font-size: larger; font-weight: bolder;">GameVerse</span> was established fifty years prior as a modest, family-owned enterprise, with the primary objective of delivering entertainment and recreational products to the local populace. For many decades, the establishment operated as a reliable community fixture, vending a diverse inventory ranging from traditional tabletop board games to the earliest iterations of home console systems. As the digital entertainment landscape underwent rapid and extensive evolution, the organization strategically adapted, acknowledging the profound global expansion and the increasing creative complexity inherent in the video game industry.</p>
+                <p>In the present business environment, in direct recognition of the widespread global reach and economic significance of the video game sector, GameVerse is executing a comprehensive transformation of its operational model to fully embrace the digital future of interactive entertainment. The core organizational mission remains immutable: to meticulously curate a comprehensive and diverse selection of gaming titles intended to appeal to every conceivable player profile. This diverse catalog caters equally to the highly competitive esports enthusiast seeking tactical challenges and the casual player exploring complex narrative open worlds. We maintain profound pride in extending our decades-long commitment to product quality, service integrity, and community engagement into this dynamic new digital frontier.</p>
+            </article>
+            <hr>
+            <article>
+                <h1>Our Commitment to Data Privacy and Security</h1>
+                <h2>i. Collection and Utilization of User Data</h2>
+                <p>GameVerse engages in the collection of personal information, including the user\'s full name, electronic mail address, and requisite billing information, exclusively where it is deemed necessary to facilitate commercial transactions and enhance the user experience, typically acquired during account registration or transactional fulfillment. It is the strict policy of the organization to procure all personal data solely through lawful, fair, and transparent means with explicit user consent, utilizing the collected data primarily for order processing, account management, technical support, and the refinement of personalized content and recommendations without engaging in third-party marketing.</p>
+                <h2>ii. Data Security and Disclosure Protocols</h2>
+                <p>The collected information is securely stored on protected servers utilizing advanced encryption technologies and robust technical and organizational measures to prevent unauthorized access, loss, or misuse. Access to personal information is strictly limited to authorized personnel, and while we maintain an uncompromising stance against the disclosure of personal data to external third parties, exceptions are made only for essential service providers (e.g., payment processors) who adhere to stringent confidentiality agreements; the full policy provides comprehensive instruction on the methodology through which users may access, modify, or formally request the permanent deletion of their retained data.</p>
+            </article>
+            <hr>
+            <article>   
+                <h1>Terms and Conditions Governing Service Use</h1>
+                <h2>i. Acceptance and Permitted Use of Service</h2>
+                <p>Accessing and utilizing the GameVerse website constitutes an act of unconditional agreement to be bound by the entirety of these Terms and Conditions and our Privacy Policy, which applies universally to all visitors and users, requiring immediate cessation of Service utilization should disagreement with any component occur. GameVerse confers a specific, non-exclusive, and non-transferable license to the user for strictly individual, personal, and non-commercial objectives, prohibiting users from engaging in any activity that may disrupt the Service, introduce malicious code, or attempt unauthorized access to the site\'s network or user data.</p>
+                <h2>ii. Intellectual Property and Liability Limitation</h2>
+                <p>All proprietary content resident on the site, including product specifications, documentation, graphical assets, and underlying code, remains the exclusive property of GameVerse or its designated content suppliers, robustly protected by applicable international copyright and intellectual property legislation, making unauthorized replication, modification, or distribution expressly forbidden. Furthermore, GameVerse and its suppliers shall not be held liable for any indirect, incidental, special, or consequential damages resulting from the use or inability to use the Service, as the Service is provided on an "as is" and "as available" basis without implied warranties regarding site functionality or continuous operation.</p>
+            </article>
+
+        </main>
+
+        <hr>
+
+        <footer>
+            <p>&copy; All Copyrights Reserved.</p>
+            <address>
+                Kruze | GameVerse
+            </address>
+            
+        </footer>';
+?>
+
+<?php include("theme/template.php"); ?>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE games [
+    <!ELEMENT games (game+)>
+    <!ELEMENT game (name,desc,price+,sTags*,platform+,review*,filename+,url)>
+
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT desc (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ELEMENT sTags (#PCDATA)>
+    <!ELEMENT platform (#PCDATA)>
+    <!ELEMENT review (#PCDATA)>
+    <!ELEMENT filename (#PCDATA)>
+    <!ELEMENT url (#PCDATA)>
+
+    <!ATTLIST game genre CDATA #REQUIRED>
+    <!ATTLIST name lang CDATA "en">
+    <!ATTLIST price currency CDATA "sgd">
+    <!ATTLIST review score (0|1|2|3|4|5) "0">
+
+    <!ENTITY win "Windows">
+    <!ENTITY mac "MacOS">
+    <!ENTITY lnx "Linux">
+    <!ENTITY adr "Android">
+]>
+
+<games>
+    <game genre="genre">
+        <name lang="en">Game name here</name>
+        <desc>Game description here</desc>
+        <price currency="sgd">Game price here</price>
+        <sTags>Search tags here</sTags>
+        <platform>&win;, &mac;, &lnx;, &adr;</platform>
+        <review score="3">Reviews/Comments here</review>
+        <filename>Image source path here</filename>
+        <url>Related URL here</url>
+    </game>
+</games>

@@ -1,0 +1,208 @@
+<!--
+ * @filename        genreRPG.html
+ * @author          Kruze
+ * @creationDate    November 26, 2025
+ */
+ -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre</title>
+    <link rel="stylesheet" type="text/css" href="theme/style.css">
+    <style>     
+
+        h1 {
+            font-size: 50px;
+            font-family:\'Franklin Gothic Medium\', \'Arial Narrow\', Arial, sans-serif;
+            background-image: linear-gradient(to right, #00BFFF, #7FFC80, #FFD700);
+            background-clip: text;
+            color: transparent;
+        }
+        main {
+            width: 80vw;
+            margin-left: 5vw; 
+            margin-right: 5vw;
+        }
+        table {
+            width:inherit;
+            margin-bottom:20px;
+        }
+        .game-data {
+            padding:5px;
+            text-align: left;
+        }
+        .desc {
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 25px;
+        }
+        .game-name{
+            font-size: 28px;
+            font-weight:bolder;
+            text-align: left;
+            color: #00BFFF;
+        }
+        #genre-name{
+            margin-top: 50px;
+            margin-left: 100px;
+            font-weight:1000;        
+        }
+
+        a:link {color: #0066ffff;}
+
+        a:visited {color: #ff9900;}
+
+        a:active {color: #dec328;}
+
+    </style>
+
+    <script>
+        
+        function displayGenre(){
+            document.querySelectorAll(".genreBtn").forEach(element => {
+                let genreBox = element;
+                if (genreBox.style.display == "none")
+                    genreBox.style.display = "block";
+                else
+                    genreBox.style.display = "none";
+            });
+        }        const genre = "RPG";
+        document.cookie = `${new Date()}=${genre}`
+    </script>
+</head>
+<body>
+    
+        <header>
+            <table>
+                <tr>
+                    <td><img src="../data/images/website/logo.png" width="200" height="200" alt="GameVerse Logo"></td>
+                    <td style="font-size: 100px; font-weight: 1000">Games</td>
+                </tr>
+            </table>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html" style="border: 2px outset #6be2fcff">Home</a></li>
+                <li><a href="about.html" style="border: 2px outset #00ffddff">About Us</a></li>   
+                <li><a href="contact.html" style="border: 2px outset #52ff89ff">Contact</a></li>
+                <li>
+                    <a style="border: 2px outset #e1fb1eff" onclick="displayGenre()">Genre</a>
+                    <div id="genreBtn-container">
+                    <form id="btn-form" action="genre.php" method="get">
+                        <button type="submit" class="genreBtn" style="display:none;" value="fps" name="genre">FPS</button>
+                        <button type="submit" class="genreBtn" style="display:none;" value="rpg" name="genre">RPG</button>
+                    </form>
+                    </div>
+                </li>
+                <li><a href="collection.html" style="border: 2px outset #fbeb59ff">Collection</a></li>
+            </ul>
+        </nav>
+    <div id="genre-name"><h1>Role-play Games</h1></div>
+    
+    <main>
+
+        
+        <table style="border: 0px solid azure; border-radius: 10px; border-collapse: collapse; background-color: #0d0c0cff">
+            
+            <tr>
+                <td style="width:40%">
+                    <div>
+                        <a href="https://store.steampowered.com/app/1091500/Cyberpunk_2077" title="Go to source website">
+                            <img src="../data/images/games/cyberPunk.webp" width="380" height="200" alt="Game 2 image">
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <table>
+                        <tr><td ><div class="game-data; game-name">Cyberpunk 2077</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Platforms:</strong> Windows, MacOS</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Review</strong>: 4 out of 5 stars, not bad</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Price</strong>: SGD 69</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Details</strong>: <a style="text-decoration: underline;" href="https://store.steampowered.com/app/1091500/Cyberpunk_2077" title="Go to source website">https://store.steampowered.com/app/1091500/Cyberpunk_2077</a></div></td></tr>
+                        <tr><td><div class="game-data"><strong>Tags</strong>: cyberpunk, open world, mature </div></td></tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><div class="desc"><strong>Game Description</strong>: A sprawling open-world action-adventure RPG set in Night City, a megalopolis obsessed with power, glamour, and body modification. Play as V, a mercenary outlaw chasing a one-of-a-kind implant that is the key to immortality, making choices that shape your story and the world around you.</div></td>
+            </tr>
+            
+        </table>
+
+        
+        <table style="border: 0px solid azure; border-radius: 10px; border-collapse: collapse; background-color: #0d0c0cff">
+            
+            <tr>
+                <td style="width:40%">
+                    <div>
+                        <a href="https://store.steampowered.com/app/1245620/ELDEN_RING" title="Go to source website">
+                            <img src="../data/images/games/eldenRing.webp" width="380" height="200" alt="Game 2 image">
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <table>
+                        <tr><td ><div class="game-data; game-name">Elden Ring</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Platforms:</strong> Windows</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Review</strong>: Just a fine game, 4 out of 5 stars</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Price</strong>: SGD 79.90</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Details</strong>: <a style="text-decoration: underline;" href="https://store.steampowered.com/app/1245620/ELDEN_RING" title="Go to source website">https://store.steampowered.com/app/1245620/ELDEN_RING</a></div></td></tr>
+                        <tr><td><div class="game-data"><strong>Tags</strong>: elden ring, dark fantasy </div></td></tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><div class="desc"><strong>Game Description</strong>: A critically acclaimed dark fantasy Action RPG set in the Lands Between, a sprawling new world rich with bloody history and deep lore. Players explore a seamless open world, battling formidable foes and engaging in deeply customizable, challenging combat that emphasizes exploration, discovery, and a high degree of skill-based mastery.</div></td>
+            </tr>
+            
+        </table>
+
+        
+        <table style="border: 0px solid azure; border-radius: 10px; border-collapse: collapse; background-color: #0d0c0cff">
+            
+            <tr>
+                <td style="width:40%">
+                    <div>
+                        <a href="https://store.steampowered.com/app/2358720/Black_Myth_Wukong" title="Go to source website">
+                            <img src="../data/images/games/blackMyth_wukong.webp" width="380" height="200" alt="Game 2 image">
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <table>
+                        <tr><td ><div class="game-data; game-name">Black Myth: Wukong</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Platforms:</strong> Windows</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Review</strong>: Amazing game! 4.4 out of 5 stars.</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Price</strong>: SGD 79.90</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Details</strong>: <a style="text-decoration: underline;" href="https://store.steampowered.com/app/2358720/Black_Myth_Wukong" title="Go to source website">https://store.steampowered.com/app/2358720/Black_Myth_Wukong</a></div></td></tr>
+                        <tr><td><div class="game-data"><strong>Tags</strong>: black myth wukong, mythodology </div></td></tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><div class="desc"><strong>Game Description</strong>: A highly anticipated Action RPG inspired by the classic Chinese novel, Journey to the West. Players take on the role of the Destined One, the legendary Sun Wukong, who must embark on a treacherous journey to uncover the truth behind a glorious old legend.</div></td>
+            </tr>
+            
+        </table>
+
+        
+    </main>
+
+    
+        <hr>
+
+        <footer>
+            <p>&copy; All Copyrights Reserved.</p>
+            <address>
+                Kruze | GameVerse
+            </address>
+            
+        </footer>
+</body>
+</html>
