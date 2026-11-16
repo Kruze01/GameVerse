@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE games [
+<!ELEMENT games (game)+>
+<!ELEMENT game (name , desc , price+ , sTags* , platform+ , review* , filename+ , url)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT desc (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT sTags (#PCDATA)>
+<!ELEMENT platform (#PCDATA)>
+<!ELEMENT review (#PCDATA)>
+<!ELEMENT filename (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ATTLIST game genre CDATA #REQUIRED>
+<!ATTLIST name lang CDATA "en">
+<!ATTLIST price currency CDATA "sgd">
+<!ATTLIST review score (0 | 1 | 2 | 3 | 4 | 5) "0">
+<!ENTITY win "Windows">
+<!ENTITY mac "MacOS">
+<!ENTITY lnx "Linux">
+<!ENTITY adr "Android">
+]>
+<games>
+    <game genre="FPS">
+        <name lang="en">Counter-Strike 2</name>
+        <desc>A premier tactical 5v5 first-person shooter that pits two teams, Terrorists and Counter-Terrorists, against one another in objective-based rounds focused on bomb control or hostage rescue, featuring a highly competitive environment and precise, skill-based gunplay.</desc>
+        <price currency="">Free</price>
+        <sTags>counter strike</sTags>
+        <sTags>multiplayer</sTags>
+        <sTags>5v5</sTags>
+        <platform>&win;, &lnx;</platform>
+        <review score="4">This game is 4 out of 5 stars</review>
+        <filename>../data/images/games/cs2.webp</filename>
+        <url>https://store.steampowered.com/app/730/CounterStrike_2</url>
+    </game>
+
+    <game genre="FPS">
+        <name lang="en">PUBG: Battlegrounds</name>
+        <desc>PUBG: PlayerUnknown's Battlegrounds- A realistic battle royale game where up to 100 players parachute onto a massive island, scrounge for weapons and gear, and fight to be the last person or squad standing as a deadly shrinking electric zone forces them into confrontation.</desc>
+        <price currency="">Free</price>
+        <sTags>pubg</sTags>
+        <sTags>multiplayer</sTags>
+        <sTags>battle royale</sTags>
+        <platform>&win;, &adr;</platform>
+        <review score="5">I'm gonna rate this 4.5 out of 5 stars</review>
+        <filename>../data/images/games/pubg.webp</filename>
+        <url>https://store.steampowered.com/app/578080/PUBG_BATTLEGROUNDS</url>
+    </game>
+
+    <game genre="FPS">
+        <name lang="en">World War Z</name>
+        <desc>An intense, four-player cooperative third-person shooter that challenges teams to survive overwhelming, fast-moving zombie swarms in locations around the globe, emphasizing class roles, defensive preparations, and coordinated action to manage the massive undead hordes.</desc>
+        <price currency="sgd">SGD 34.9</price>
+        <sTags>world war z</sTags>
+        <sTags>multiplayer</sTags>
+        <sTags>zombies</sTags>
+        <platform>&win;</platform>
+        <review score="4">4.3 out of 5 stars</review>
+        <filename>../data/images/games/wwz.webp</filename>
+        <url>https://store.steampowered.com/app/699130/World_War_Z</url>
+    </game>
+</games>

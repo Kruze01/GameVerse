@@ -1,0 +1,208 @@
+<!--
+ * @filename        genreFPS.html
+ * @author          Kruze
+ * @creationDate    November 26, 2025
+ */
+ -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre</title>
+    <link rel="stylesheet" type="text/css" href="theme/style.css">
+    <style>     
+
+        h1 {
+            font-size: 50px;
+            font-family:\'Franklin Gothic Medium\', \'Arial Narrow\', Arial, sans-serif;
+            background-image: linear-gradient(to right, #00BFFF, #7FFC80, #FFD700);
+            background-clip: text;
+            color: transparent;
+        }
+        main {
+            width: 80vw;
+            margin-left: 5vw; 
+            margin-right: 5vw;
+        }
+        table {
+            width:inherit;
+            margin-bottom:20px;
+        }
+        .game-data {
+            padding:5px;
+            text-align: left;
+        }
+        .desc {
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 25px;
+        }
+        .game-name{
+            font-size: 28px;
+            font-weight:bolder;
+            text-align: left;
+            color: #00BFFF;
+        }
+        #genre-name{
+            margin-top: 50px;
+            margin-left: 100px;
+            font-weight:1000;        
+        }
+
+        a:link {color: #0066ffff;}
+
+        a:visited {color: #ff9900;}
+
+        a:active {color: #dec328;}
+
+    </style>
+
+    <script>
+        
+        function displayGenre(){
+            document.querySelectorAll(".genreBtn").forEach(element => {
+                let genreBox = element;
+                if (genreBox.style.display == "none")
+                    genreBox.style.display = "block";
+                else
+                    genreBox.style.display = "none";
+            });
+        }        const genre = "FPS";
+        document.cookie = `${new Date()}=${genre}`
+    </script>
+</head>
+<body>
+    
+        <header>
+            <table>
+                <tr>
+                    <td><img src="../data/images/website/logo.png" width="200" height="200" alt="GameVerse Logo"></td>
+                    <td style="font-size: 100px; font-weight: 1000">Games</td>
+                </tr>
+            </table>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html" style="border: 2px outset #6be2fcff">Home</a></li>
+                <li><a href="about.html" style="border: 2px outset #00ffddff">About Us</a></li>   
+                <li><a href="contact.html" style="border: 2px outset #52ff89ff">Contact</a></li>
+                <li>
+                    <a style="border: 2px outset #e1fb1eff" onclick="displayGenre()">Genre</a>
+                    <div id="genreBtn-container">
+                    <form id="btn-form" action="genre.php" method="get">
+                        <button type="submit" class="genreBtn" style="display:none;" value="fps" name="genre">FPS</button>
+                        <button type="submit" class="genreBtn" style="display:none;" value="rpg" name="genre">RPG</button>
+                    </form>
+                    </div>
+                </li>
+                <li><a href="collection.html" style="border: 2px outset #fbeb59ff">Collection</a></li>
+            </ul>
+        </nav>
+    <div id="genre-name"><h1>First-person Shooting</h1></div>
+    
+    <main>
+
+        
+        <table style="border: 0px solid azure; border-radius: 10px; border-collapse: collapse; background-color: #0d0c0cff">
+            
+            <tr>
+                <td style="width:40%">
+                    <div>
+                        <a href="https://store.steampowered.com/app/730/CounterStrike_2" title="Go to source website">
+                            <img src="../data/images/games/cs2.webp" width="380" height="200" alt="Game 2 image">
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <table>
+                        <tr><td ><div class="game-data; game-name">Counter-Strike 2</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Platforms:</strong> Windows, Linux</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Review</strong>: This game is 4 out of 5 stars</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Price</strong>: Free</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Details</strong>: <a style="text-decoration: underline;" href="https://store.steampowered.com/app/730/CounterStrike_2" title="Go to source website">https://store.steampowered.com/app/730/CounterStrike_2</a></div></td></tr>
+                        <tr><td><div class="game-data"><strong>Tags</strong>: counter strike, multiplayer, 5v5 </div></td></tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><div class="desc"><strong>Game Description</strong>: A premier tactical 5v5 first-person shooter that pits two teams, Terrorists and Counter-Terrorists, against one another in objective-based rounds focused on bomb control or hostage rescue, featuring a highly competitive environment and precise, skill-based gunplay.</div></td>
+            </tr>
+            
+        </table>
+
+        
+        <table style="border: 0px solid azure; border-radius: 10px; border-collapse: collapse; background-color: #0d0c0cff">
+            
+            <tr>
+                <td style="width:40%">
+                    <div>
+                        <a href="https://store.steampowered.com/app/578080/PUBG_BATTLEGROUNDS" title="Go to source website">
+                            <img src="../data/images/games/pubg.webp" width="380" height="200" alt="Game 2 image">
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <table>
+                        <tr><td ><div class="game-data; game-name">PUBG: Battlegrounds</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Platforms:</strong> Windows, Android</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Review</strong>: I'm gonna rate this 4.5 out of 5 stars</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Price</strong>: Free</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Details</strong>: <a style="text-decoration: underline;" href="https://store.steampowered.com/app/578080/PUBG_BATTLEGROUNDS" title="Go to source website">https://store.steampowered.com/app/578080/PUBG_BATTLEGROUNDS</a></div></td></tr>
+                        <tr><td><div class="game-data"><strong>Tags</strong>: pubg, multiplayer, battle royale </div></td></tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><div class="desc"><strong>Game Description</strong>: PUBG: PlayerUnknown's Battlegrounds- A realistic battle royale game where up to 100 players parachute onto a massive island, scrounge for weapons and gear, and fight to be the last person or squad standing as a deadly shrinking electric zone forces them into confrontation.</div></td>
+            </tr>
+            
+        </table>
+
+        
+        <table style="border: 0px solid azure; border-radius: 10px; border-collapse: collapse; background-color: #0d0c0cff">
+            
+            <tr>
+                <td style="width:40%">
+                    <div>
+                        <a href="https://store.steampowered.com/app/699130/World_War_Z" title="Go to source website">
+                            <img src="../data/images/games/wwz.webp" width="380" height="200" alt="Game 2 image">
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <table>
+                        <tr><td ><div class="game-data; game-name">World War Z</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Platforms:</strong> Windows</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Review</strong>: 4.3 out of 5 stars</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Price</strong>: SGD 34.9</div></td></tr>
+                        <tr><td><div class="game-data"><strong>Details</strong>: <a style="text-decoration: underline;" href="https://store.steampowered.com/app/699130/World_War_Z" title="Go to source website">https://store.steampowered.com/app/699130/World_War_Z</a></div></td></tr>
+                        <tr><td><div class="game-data"><strong>Tags</strong>: world war z, multiplayer, zombies </div></td></tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><div class="desc"><strong>Game Description</strong>: An intense, four-player cooperative third-person shooter that challenges teams to survive overwhelming, fast-moving zombie swarms in locations around the globe, emphasizing class roles, defensive preparations, and coordinated action to manage the massive undead hordes.</div></td>
+            </tr>
+            
+        </table>
+
+        
+    </main>
+
+    
+        <hr>
+
+        <footer>
+            <p>&copy; All Copyrights Reserved.</p>
+            <address>
+                Kruze | GameVerse
+            </address>
+            
+        </footer>
+</body>
+</html>

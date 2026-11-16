@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE games [
+<!ELEMENT games (game)+>
+<!ELEMENT game (name , desc , price+ , sTags* , platform+ , review* , filename+ , url)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT desc (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT sTags (#PCDATA)>
+<!ELEMENT platform (#PCDATA)>
+<!ELEMENT review (#PCDATA)>
+<!ELEMENT filename (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ATTLIST game genre CDATA #REQUIRED>
+<!ATTLIST name lang CDATA "en">
+<!ATTLIST price currency CDATA "sgd">
+<!ATTLIST review score (0 | 1 | 2 | 3 | 4 | 5) "0">
+<!ENTITY win "Windows">
+<!ENTITY mac "MacOS">
+<!ENTITY lnx "Linux">
+<!ENTITY adr "Android">
+]>
+<games>
+    <game genre="RPG">
+        <name lang="en">Cyberpunk 2077</name>
+        <desc>A sprawling open-world action-adventure RPG set in Night City, a megalopolis obsessed with power, glamour, and body modification. Play as V, a mercenary outlaw chasing a one-of-a-kind implant that is the key to immortality, making choices that shape your story and the world around you.</desc>
+        <price currency="sgd">SGD 69</price>
+        <sTags>cyberpunk</sTags>
+        <sTags>open world</sTags>
+        <sTags>mature</sTags>
+        <platform>&win;, &mac;</platform>
+        <review score="4">4 out of 5 stars, not bad</review>
+        <filename>../data/images/games/cyberPunk.webp</filename>
+        <url>https://store.steampowered.com/app/1091500/Cyberpunk_2077</url>
+    </game>
+
+    <game genre="RPG">
+        <name lang="en">Elden Ring</name>
+        <desc>A critically acclaimed dark fantasy Action RPG set in the Lands Between, a sprawling new world rich with bloody history and deep lore. Players explore a seamless open world, battling formidable foes and engaging in deeply customizable, challenging combat that emphasizes exploration, discovery, and a high degree of skill-based mastery.</desc>
+        <price currency="sgd">SGD 79.90</price>
+        <sTags>elden ring</sTags>
+        <sTags>dark fantasy</sTags>
+        <platform>&win;</platform>
+        <review score="4">Just a fine game, 4 out of 5 stars</review>
+        <filename>../data/images/games/eldenRing.webp</filename>
+        <url>https://store.steampowered.com/app/1245620/ELDEN_RING</url>
+    </game>
+
+    <game genre="RPG">
+        <name lang="en">Black Myth: Wukong</name>
+        <desc>A highly anticipated Action RPG inspired by the classic Chinese novel, Journey to the West. Players take on the role of the Destined One, the legendary Sun Wukong, who must embark on a treacherous journey to uncover the truth behind a glorious old legend.</desc>
+        <price currency="sgd">SGD 79.90</price>
+        <sTags>black myth wukong</sTags>
+        <sTags>mythodology</sTags>
+        <platform>&win;</platform>
+        <review score="4">Amazing game! 4.4 out of 5 stars.</review>
+        <filename>../data/images/games/blackMyth_wukong.webp</filename>
+        <url>https://store.steampowered.com/app/2358720/Black_Myth_Wukong</url>
+    </game>
+</games>
